@@ -39,7 +39,6 @@ class EditorView {
     void setDeltaScroll(float delta);
     void setDeltaRotation(float delta);
 
-    // TODO: Replace std::pair with coordinates object
     std::pair<int,int> getDocumentCoords(float mouseX, float mouseY);
 
    private:

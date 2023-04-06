@@ -23,7 +23,6 @@ class EditorContent {
     bool deleteSelections();
     sf::String copySelections();
 
-    // TODO: Se puede pasar los valores por defecto al .cpp ?
     bool moveCursorLeft(bool updateActiveSelections=false);
     void moveCursorRight(bool updateActiveSelections=false);
     void moveCursorUp(bool updateActiveSelections=false);
