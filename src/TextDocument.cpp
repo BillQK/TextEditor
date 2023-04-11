@@ -62,9 +62,6 @@ int TextDocument::getBufferPos(int line, int charN)
     return 0;
 }
 
-void TextDocument::swapWithNextLine(int line)
-{
-}
 
 sf::String TextDocument::toUtf32(const std::string &inString)
 {
