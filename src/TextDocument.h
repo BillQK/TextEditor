@@ -27,7 +27,7 @@ class TextDocument {
     int getLineCount() const;
 
     void addTextToPos(sf::String text, int line, int charN);
-    void removeTextFromPos(int amount, int line, int charN);
+    void removeTextFromPos(int amount, int lineN, int charN);
     sf::String getTextFromPos(int amount, int line, int charN);
 
 
