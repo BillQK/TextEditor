@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <string>
 using namespace std;
 
 #include "TextDocument.h"
