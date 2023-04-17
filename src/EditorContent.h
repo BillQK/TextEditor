@@ -9,20 +9,6 @@ class EditorContent {
    public:
     EditorContent(TextDocument &textDocument);
 
-    void createNewSelection(int anclaLine, int anclaChar);
-    void createNewSelectionFromCursor();
-    void updateLastSelection(int lineN, int charN);
-
-    void removeSelections();
-
-    void duplicateCursorLine();
-    void swapCursorLine(bool swapWithUp);
-    void swapSelectedLines(bool swapWithUp);
-
-    bool isSelected(int lineNumber, int charIndexInLine);
-    bool deleteSelections();
-    sf::String copySelections();
-
     bool moveCursorLeft(bool updateActiveSelections=false);
     void moveCursorRight(bool updateActiveSelections=false);
     void moveCursorUp(bool updateActiveSelections=false);

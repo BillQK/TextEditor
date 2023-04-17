@@ -30,7 +30,6 @@ class TextDocument {
     void removeTextFromPos(int amount, int line, int charN);
     sf::String getTextFromPos(int amount, int line, int charN);
 
-    void swapLines(int lineA, int lineB);
 
     int charAmountContained(int startLineN, int startCharN, int endLineN, int endCharN);
    private:
@@ -41,8 +40,6 @@ class TextDocument {
     bool documentHasChanged;
 
     int getBufferPos(int line, int charN);
-
-    void swapWithNextLine(int line);
 
     sf::String toUtf32(const std::string &inString);
 };
