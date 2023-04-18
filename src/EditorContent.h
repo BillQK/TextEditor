@@ -31,13 +31,13 @@ class EditorContent {
     int getCharIndexOfColumn(int lineN, int column);
     int getColumnFromCharN(int lineN, int charN);
 
+    void handleSelectionOnCursorMovement(bool updateActiveSelections);
    private:
     TextDocument &document;
 
     sf::Font font;
     Cursor cursor;
 
-    void handleSelectionOnCursorMovement(bool updateActiveSelections);
 };
 
 #endif

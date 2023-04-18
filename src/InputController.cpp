@@ -97,7 +97,7 @@ bool InputController::isMouseDown()
 {
     return this->mouseDown;
 }
-void InputController::handleKeyPressedEvents(EditorView &view, sf::Event &event)
+void InputController::handleKeyPressedEvents(EditorView &textView, sf::Event &event)
 {
     if (event.type == sf::Event::KeyPressed) {
         bool isCtrlPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl);

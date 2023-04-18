@@ -6,6 +6,7 @@
 
 #include "EditorView.h"
 #include "EditorContent.h"
+#include "EditorView.h"
 
 class InputController {
    public:
@@ -14,7 +15,6 @@ class InputController {
     void handleEvents(EditorView &view, sf::RenderWindow &window, sf::Event &event);
     bool isMouseDown();
 
-   private:
     void handleMouseEvents(EditorView &view, sf::RenderWindow &window, sf::Event &event);
     void handleKeyPressedEvents(EditorView &view, sf::Event &event);
     void handleKeyReleasedEvents(sf::Event &event);
@@ -22,6 +22,7 @@ class InputController {
 
     void updateCursorInEditor(EditorView &textView, float mouseX, float mouseY);
 
+   private:
     bool mouseDown;
     bool shiftPressed;
     sf::String stringCopied;

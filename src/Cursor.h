@@ -30,11 +30,11 @@ class Cursor {
     void setMaxCharNReached(int charN);
     int getMaxCharNReached();
 
+    void updatePos(int posY, int posX);
    private:
     int lineN, charN;
     int maxCharNReached;
 
-    void updatePos(int posY, int posX);
 };
 
 #endif
