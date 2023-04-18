@@ -28,10 +28,13 @@ bool TextDocument::saveFile(string &filename)
         return false;
     }
 
-    std::stringstream savedFile; 
+    std::stringstream savedFile;
+    // Replace the original loop with the following loop
     for (sf::Uint32 ch : this->buffer) {
-        savedFile << ch;
-    };
+        std::string utf8_char;
+        sf::Utf8::encode(ch, std::back_inserter(utf8_char));
+        savedFile << utf8_char;
+    }
 
     outputFile << savedFile.str(); 
 
@@ -39,7 +42,6 @@ bool TextDocument::saveFile(string &filename)
 
     this->documentHasChanged = false;
     return true;
-
 }
 
 bool TextDocument::hasChanged()
@@ -58,19 +60,22 @@ sf::String TextDocument::getLine(int lineNumber)
         return "";
     }
 
-    if (lineNumber == lastLine)
-    {
-        return this->buffer.substring(this->lineBuffer[lineNumber]);
+    int bufferStart = this->lineBuffer[lineNumber];
+    int nextBufferStart = this->lineBuffer[lineNumber + 1];
+    
+    // Find the actual end of the line by searching for '\n' or '\r'
+    while (nextBufferStart > bufferStart 
+            && (this->buffer[nextBufferStart - 1] == '\n' 
+            || this->buffer[nextBufferStart - 1] == '\r')) {
+        nextBufferStart--;
     }
-    else
-    {
-        int bufferStart = this->lineBuffer[lineNumber];
-        int nextBufferStart = this->lineBuffer[lineNumber + 1];
-        int cantidad = nextBufferStart - bufferStart - 1;
+    
+    int cantidad = nextBufferStart - bufferStart;
 
-        return this->buffer.substring(bufferStart, cantidad);
-    }
+    return this->buffer.substring(bufferStart, cantidad);
 }
+
+
 
 int TextDocument::charsInLine(int line) const
 {
@@ -88,7 +93,7 @@ int TextDocument::charsInLine(int line) const
 
 int TextDocument::getLineCount() const
 {
-     return (int)this->lineBuffer.size();
+     return (int) this->lineBuffer.size();
 }
 
 void TextDocument::addTextToPos(sf::String text, int line, int charN)

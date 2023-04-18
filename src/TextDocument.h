@@ -32,16 +32,20 @@ class TextDocument {
 
 
     int charAmountContained(int startLineN, int startCharN, int endLineN, int endCharN);
-   private:
-    bool initLinebuffer();
-    sf::String buffer;
-    int length;
-    vector<int> lineBuffer;
-    bool documentHasChanged;
 
     int getBufferPos(int line, int charN);
 
     sf::String toUtf32(const std::string &inString);
+
+    bool initLinebuffer();
+
+    bool documentHasChanged;
+   private:
+    sf::String buffer;
+    int length;
+    vector<int> lineBuffer;
+
+    
 };
 
 #endif
