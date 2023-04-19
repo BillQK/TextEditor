@@ -114,7 +114,7 @@ void Document::addTextToPos(sf::String &text, int line, int charN)
     int textSize = static_cast<int>(text.getSize());
     auto bufferInsertPos = getBufferPos(line, charN);
 
-    if (!bufferInsertPos) {
+    if (bufferInsertPos < 0) {
         std::cerr << "Can't get buffer pos of: " << charN << std::endl;
         std::cerr << "Buffer last line is: " << lineBuffer.size() - 1 << std::endl;
         return;
@@ -142,6 +142,7 @@ void Document::addTextToPos(sf::String &text, int line, int charN)
         }
     }
 }
+
 
 
 // Remove text from a specific position in the document
@@ -199,17 +200,16 @@ bool Document::initLineBuffer()
     return true;
 }
 
-// Get the position in the buffer for a specified line and character number
 int Document::getBufferPos(int line, int charN)
 {
-    if (line >= static_cast<int>(lineBuffer.size()))
+    if (line < 0 || line >= static_cast<int>(lineBuffer.size()))
     {
-        std::cerr << "\nCan't get buffer pos of: " << line << "\n";
-        std::cerr << "Buffer last line is: " << lineBuffer.size() - 1 << "\n\n";
+        throw std::out_of_range("Invalid line number");
     }
     // Return the position in the buffer for the specified line and character number
     return lineBuffer[line] + charN;
 }
+
 
 // Convert a UTF-8 encoded string to a UTF-32 encoded sf::String
 sf::String Document::toUtf32(const std::string &inString)
