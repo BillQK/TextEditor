@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-#include "TextDocument.h"
+#include "src/TextDocument.h"
 #include "unit_test_framework.h"
 
 // Helper function to convert sfString to string

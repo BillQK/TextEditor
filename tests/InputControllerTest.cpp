@@ -3,9 +3,9 @@
 #include <string>
 using namespace std;
 
-#include "InputController.h"
-#include "EditorContent.h"
-#include "EditorView.h"
+#include "src/InputController.h"
+#include "src/EditorContent.h"
+#include "src/EditorView.h"
 #include "unit_test_framework.h"
 
 // Mock classes and functions if necessary

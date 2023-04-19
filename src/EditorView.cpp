@@ -8,7 +8,7 @@ camera(sf::FloatRect(-50, 0, window.getSize().x, window.getSize().y))
     this->bottomLimitPx = 1;
     this->rightLimitPx = 1;
 
-    this->setFontSize(18); 
+    this->setFontSize(25); 
 
     this->marginXOffset = 45;
     this->colorMargin = sf::Color(32, 44, 68);

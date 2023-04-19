@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-#include "EditorContent.h"
+#include "src/EditorContent.h"
 #include "unit_test_framework.h"
 
 

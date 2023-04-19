@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-#include "Cursor.h"
+#include "src/Cursor.h"
 #include "unit_test_framework.h"
 
 
