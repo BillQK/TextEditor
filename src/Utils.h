@@ -1,9 +1,9 @@
-#ifndef ImplementationUtils_H
-#define ImplementationUtils_H
+#ifndef Utils_H
+#define Utils_H
 
 #include <string>
 
-class ImplementationUtils {
+class Utils {
    public:
     static std::string getWorkingDirectory(const std::string &argvZero);
 };

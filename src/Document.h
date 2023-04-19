@@ -1,5 +1,5 @@
-#ifndef TextDocument_H
-#define TextDocument_H
+#ifndef Document_H
+#define Document_H
 
 #include <SFML/Graphics.hpp>
 #include <fstream>
@@ -7,7 +7,6 @@
 #include <locale>
 #include <sstream>
 #include <vector>
-
 #include <algorithm>
 #include <string>
 
@@ -16,17 +15,17 @@
 using std::string;
 using std::vector;
 
-class TextDocument {
+class Document {
    public:
-    bool init(string &filename);
-    bool saveFile(string &filename);
-    bool hasChanged();
+    bool init(const string &filename);
+    bool saveFile(const string &filename);
+    bool hasChanged() const;
 
-    sf::String getLine(int lineNumber);
+    sf::String getLine(int lineNumber) const;
     int charsInLine(int line) const;
     int getLineCount() const;
 
-    void addTextToPos(sf::String text, int line, int charN);
+    void addTextToPos(sf::String& text, int line, int charN);
     void removeTextFromPos(int amount, int lineN, int charN);
     sf::String getTextFromPos(int amount, int line, int charN);
 
@@ -34,7 +33,7 @@ class TextDocument {
 
     sf::String toUtf32(const std::string &inString);
 
-    bool initLinebuffer();
+    bool initLineBuffer();
 
     bool documentHasChanged;
    private:

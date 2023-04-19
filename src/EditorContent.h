@@ -2,20 +2,17 @@
 #define EditorContent_H
 
 #include <SFML/Graphics.hpp>
-#include "TextDocument.h"
+#include "Document.h"
 #include "Cursor.h"
 
 class EditorContent {
    public:
-    EditorContent(TextDocument &textDocument);
+    EditorContent(Document &textDocument);
     
     bool moveCursorLeft(bool updateActiveSelections=false);
     void moveCursorRight(bool updateActiveSelections=false);
     void moveCursorUp(bool updateActiveSelections=false);
     void moveCursorDown(bool updateActiveSelections=false);
-
-    void moveCursorToEnd(bool updateActiveSelections=false);
-    void moveCursorToStart(bool updateActiveSelections=false);
 
     void addTextInCursorPos(sf::String text);
     void deleteTextAfterCursorPos(int amount);
@@ -32,7 +29,7 @@ class EditorContent {
     int getColumnFromCharN(int lineN, int charN);
 
    private:
-    TextDocument &document;
+    Document &document;
 
     sf::Font font;
     Cursor cursor;

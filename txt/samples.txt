@@ -1,3 +1,3 @@
-This is a sample text:In this program you could Ctrl+S to save fileEnter any textDelete any textUsing your mouse and arrow key to move the cursor Change the fonts  
-
-
+This a sample text:In this pogram you could Ctrl+S to save fileEnter any textDelete any textUsing your mouse and arrow key to move the cursor hange the fonts hello world!  
+
+

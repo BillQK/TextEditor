@@ -12,6 +12,7 @@ class InputController {
     InputController(EditorContent &editorContent);
     void handleEvents(EditorView &textView, sf::RenderWindow &window, sf::Event &event);
     bool isMouseDown();
+    bool isShiftPressed();
 
     void handleMouseEvents(EditorView &view, sf::RenderWindow &window, sf::Event &event);
     void handleKeyPressedEvents(EditorView &view, sf::Event &event);

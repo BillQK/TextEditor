@@ -1,6 +1,6 @@
 #include "EditorContent.h"
 
-EditorContent::EditorContent(TextDocument &textDocument) : document(textDocument)
+EditorContent::EditorContent(Document &textDocument) : document(textDocument)
 {
     this->cursor = Cursor(0, 0);
 }

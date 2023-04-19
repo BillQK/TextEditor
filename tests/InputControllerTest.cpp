@@ -6,46 +6,34 @@ using namespace std;
 #include "src/InputController.h"
 #include "src/EditorContent.h"
 #include "src/EditorView.h"
+#include "src/TextDocument.h"
 #include "unit_test_framework.h"
+#include "MockEditorView.h"        // Replace with the mock class
+#include "MockRenderWindow.h"      // Replace with the mock class
+#include "MockEvent.h"             // Replace with the mock class
 
-// Mock classes and functions if necessary
 
 TEST(InputControllerTestInitialization)
-{
-  EditorContent editorContent;
-  InputController inputController(editorContent);
-  // Check if any internal state of the InputController needs to be tested
-}
+{   
+    TextDocument document.init('test.txt');
+    EditorContent editorContent(document);
+    InputController inputController(editorContent);
 
-TEST(InputControllerTestHandleConstantInput)
-{
-  EditorContent editorContent;
-  InputController inputController(editorContent);
-
-  EditorView view;
-  sf::RenderWindow window;
-
-  // Test different input scenarios and verify the expected behavior
-}
-
-TEST(InputControllerTestHandleEvents)
-{
-  EditorContent editorContent;
-  InputController inputController(editorContent);
-
-  EditorView view;
-  sf::RenderWindow window;
-  sf::Event event;
-
-  // Test different events and verify the expected behavior
+    // Check if the initial state of the InputController object is as expected
+    ASSERT_FALSE(inputController.getMouseDown());
+    ASSERT_FALSE(inputController.getShiftPressed());
 }
 
 TEST(InputControllerTestIsMouseDown)
 {
-  EditorContent editorContent;
-  InputController inputController(editorContent);
+    TextDocument document.init('test.txt');
+    EditorContent editorContent(document);
+    InputController inputController(editorContent);
 
-  // Test different mouse scenarios and verify the expected behavior
+    // Test different mouse scenarios and verify the expected behavior    
+    ASSERT_FALSE(inputController.getMouseDown());
+    inputController.handleMouseEvents()
+
 }
 
 TEST(InputControllerTestHandleMouseEvents)
