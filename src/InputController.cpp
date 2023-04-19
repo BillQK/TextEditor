@@ -14,20 +14,26 @@ void InputController::handleEvents(EditorView &textView, sf::RenderWindow &windo
 }
 
 void InputController::handleMouseEvents(EditorView &textView, sf::RenderWindow &window, sf::Event &event) {
-    if (event.type == sf::Event::MouseButtonPressed) {
-        auto mousepos = sf::Mouse::getPosition(window);
-        auto mousepos_text = window.mapPixelToCoords(mousepos);
+    sf::Vector2<int> mousepos;
+    sf::Vector2<float> mousepos_text;
+    std::pair<int, int> docCoords;
 
-        std::pair<int, int> docCoords = textView.getDocumentCoords(mousepos_text.x, mousepos_text.y);
-        editorContent.resetCursor(docCoords.first, docCoords.second);
-
-        mouseDown = true;
-    }
-
-    if (event.type == sf::Event::MouseButtonReleased) {
-        mouseDown = false;
+    switch (event.type) {
+        case sf::Event::MouseButtonPressed:
+            mousepos = sf::Mouse::getPosition(window);
+            mousepos_text = window.mapPixelToCoords(mousepos);
+            docCoords = textView.getDocumentCoords(mousepos_text.x, mousepos_text.y);
+            editorContent.resetCursor(docCoords.first, docCoords.second);
+            mouseDown = true;
+            break;
+        case sf::Event::MouseButtonReleased:
+            mouseDown = false;
+            break;
+        default:
+            break;
     }
 }
+
 
 bool InputController::isMouseDown() {
     return mouseDown;
