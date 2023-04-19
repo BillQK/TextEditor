@@ -14,16 +14,6 @@ class EditorView {
     void draw(sf::RenderWindow &window);
     void setFontSize(int fontSize);
 
-    void scrollUp(sf::RenderWindow &window);
-    void scrollDown(sf::RenderWindow &window);
-    void scrollLeft(sf::RenderWindow &window);
-    void scrollRight(sf::RenderWindow &window);
-
-    void scrollTo(float x, float y);
-
-    void rotateLeft();
-    void rotateRight();
-
     int getLineHeight();
     int getCharWidth();
 

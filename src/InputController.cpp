@@ -16,54 +16,11 @@ void InputController::handleEvents(EditorView & textView, sf::RenderWindow & win
     this->handleTextEnteredEvent(textView, event);
 }
 
-void InputController::handleConstantInput(EditorView &textView, sf::RenderWindow &window)
-{
-    if (this->isMouseDown())
-    {
-        auto mousepos = sf::Mouse::getPosition(window);
-        auto mousepos_text = window.mapPixelToCoords(mousepos);
-
-        updateCursorInEditor(textView, mousepos_text.x, mousepos_text.y);
-
-        float textViewTop = 0;
-        float textViewBottom = window.getView().getSize().y - 5;
-        float textViewLeft = 0;
-        float textViewRight = window.getView().getSize().x;
-
-        if (mousepos.x < textViewLeft) {
-            textView.scrollLeft(window);
-        } else if (mousepos.x > textViewRight) {
-            textView.scrollRight(window);
-        }
-
-        if (mousepos.y < textViewTop) {
-            textView.scrollUp(window);
-        } else if (mousepos.y > textViewBottom) {
-            textView.scrollDown(window);
-        }
-    }
-}
-
 void InputController::handleMouseEvents(
     EditorView &textView,
     sf::RenderWindow &window,
     sf::Event &event) {
 
-    if (event.type == sf::Event::MouseWheelScrolled) {
-        if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
-            if (event.mouseWheelScroll.delta > 0) {
-                textView.scrollUp(window);
-            } else {
-                textView.scrollDown(window);
-            }
-        } else if (event.mouseWheelScroll.wheel == sf::Mouse::HorizontalWheel) {
-            if (event.mouseWheelScroll.delta > 0) {
-                textView.scrollLeft(window);
-            } else {
-                textView.scrollRight(window);
-            }
-        }
-    }
     if (event.type == sf::Event::MouseButtonPressed) {
         auto mousepos = sf::Mouse::getPosition(window);
         auto mousepos_text = window.mapPixelToCoords(mousepos);

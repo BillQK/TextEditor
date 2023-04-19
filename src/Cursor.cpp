@@ -53,7 +53,7 @@ int Cursor::getCharN()
 
 void Cursor::setPosition(int lineN, int charN, bool updateMaxChar)
 {
-    this->updatePos(lineN, charN) 
+    this->updatePos(lineN, charN);
     if (updateMaxChar) {
         this->setMaxCharNReached(this->charN); 
     }
