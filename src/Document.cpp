@@ -57,7 +57,6 @@ bool Document::hasChanged() const
     return this->documentHasChanged;
 }
 
-// Get a specific line of text from the document
 sf::String Document::getLine(int lineNumber) const
 {
     int lastLine = static_cast<int>(this->lineBuffer.size()) - 1;
@@ -70,7 +69,7 @@ sf::String Document::getLine(int lineNumber) const
     }
 
     int bufferStart = this->lineBuffer[lineNumber];
-    int nextBufferStart = this->lineBuffer[lineNumber + 1];
+    int nextBufferStart = (lineNumber + 1 <= lastLine) ? this->lineBuffer[lineNumber + 1] : this->buffer.getSize();
 
     // Look for the end of the line
     while (nextBufferStart > bufferStart &&
@@ -84,6 +83,7 @@ sf::String Document::getLine(int lineNumber) const
 
     return this->buffer.substring(bufferStart, cantidad);
 }
+
 
 // Get the number of characters in a specific line
 int Document::charsInLine(int line) const
@@ -112,7 +112,14 @@ void Document::addTextToPos(sf::String &text, int line, int charN)
     documentHasChanged = true;
 
     int textSize = static_cast<int>(text.getSize());
-    int bufferInsertPos = getBufferPos(line, charN);
+    auto bufferInsertPos = getBufferPos(line, charN);
+
+    if (!bufferInsertPos) {
+        std::cerr << "Can't get buffer pos of: " << charN << std::endl;
+        std::cerr << "Buffer last line is: " << lineBuffer.size() - 1 << std::endl;
+        return;
+    }
+
     buffer.insert(bufferInsertPos, text);
 
     // Adjust line buffer for added text
@@ -136,19 +143,25 @@ void Document::addTextToPos(sf::String &text, int line, int charN)
     }
 }
 
+
 // Remove text from a specific position in the document
 void Document::removeTextFromPos(int amount, int lineN, int charN)
 {
     // Mark the document as changed
     documentHasChanged = true;
 
-    // Calculate the position in the buffer to start removing text
-    int bufferStartPos = getBufferPos(lineN, charN);
-    // Erase the specified amount of text from the buffer
-    buffer.erase(bufferStartPos, amount);
+    try {
+        // Calculate the position in the buffer to start removing text
+        int bufferStartPos = getBufferPos(lineN, charN);
+        // Erase the specified amount of text from the buffer
+        buffer.erase(bufferStartPos, amount);
 
-    // Update the line buffer to reflect the removal of text
-    initLineBuffer();
+        // Update the line buffer to reflect the removal of text
+        initLineBuffer();
+    }
+    catch (const std::out_of_range& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
 }
 
 // Get text from a specific position in the document

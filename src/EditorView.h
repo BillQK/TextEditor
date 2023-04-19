@@ -43,7 +43,6 @@ class EditorView {
     float bottomLimitPx;
 
     sf::Color colorChar;
-    sf::Color colorSelection;
 
     sf::View camera;
 };

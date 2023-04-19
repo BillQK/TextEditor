@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
 
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(720, 405), saveFileName);
-    sf::Color backgroundColor = sf::Color(21, 29, 45);
+    sf::Color backgroundColor = sf::Color(242, 227, 219);
 
     // Initialize the text document
     Document textDocument;

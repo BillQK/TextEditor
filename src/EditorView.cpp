@@ -3,18 +3,19 @@
 EditorView::EditorView(const sf::RenderWindow &window, const sf::String &workingDirectory, EditorContent &editorContent) : content(editorContent),
 camera(sf::FloatRect(-50, 0, window.getSize().x, window.getSize().y))
 {
-    this->font.loadFromFile(workingDirectory + "fonts/FreeMono.ttf");
+    this->font.loadFromFile("fonts/FreeMono.ttf");
+    // this->font.loadFromFile(workingDirectory + "fonts/DejaVuSansMono.ttf");
 
     this->bottomLimitPx = 1;
     this->rightLimitPx = 1;
 
-    this->setFontSize(25); 
+    this->setFontSize(18);  // Important to call
+
 
     this->marginXOffset = 45;
-    this->colorMargin = sf::Color(32, 44, 68);
+    this->colorMargin =  sf::Color(65,100,74);
 
-    this->colorChar = sf::Color::White;
-    this->colorSelection = sf::Color(106, 154, 232);
+    this->colorChar = sf::Color(65,100,74);
 }
 
 void EditorView::draw(sf::RenderWindow &window)
@@ -29,7 +30,7 @@ void EditorView::draw(sf::RenderWindow &window)
         int blockHeight = lineHeight * this->fontSize;
 
         sf::Text lineNumberText;
-        lineNumberText.setFillColor(sf::Color::White);
+        lineNumberText.setFillColor(sf::Color(242, 227, 219));
         lineNumberText.setFont(this->font);
         lineNumberText.setString(std::to_string(lineNumber));
         lineNumberText.setCharacterSize(this->fontSize - 1);
@@ -124,18 +125,19 @@ void EditorView::drawLines(sf::RenderWindow &window)
 
         float offsetx = 0;
 
+
         for (int charIndexInLine = 0; charIndexInLine <= (int)line.getSize(); charIndexInLine++) {
 
             if (charIndexInLine == (int)line.getSize()) {
-                sf::Text text;
-                text.setFillColor(this->colorChar);
-                text.setFont(font);
-                text.setString(currentLineText);
-                text.setCharacterSize(this->fontSize);
-                text.setPosition(offsetx, lineNumber * this->fontSize);
+                sf::Text texto;
+                texto.setFillColor(sf::Color(65,100,74));
+                texto.setFont(font);
+                texto.setString(currentLineText);
+                texto.setCharacterSize(this->fontSize);
+                texto.setPosition(offsetx, lineNumber * this->fontSize);
 
-
-                window.draw(text);
+        
+                window.draw(texto);
 
                 currentLineText = "";
             }
@@ -158,7 +160,7 @@ void EditorView::drawCursor(sf::RenderWindow &window)
     int column = cursorPos.second;
 
     sf::RectangleShape cursorRect(sf::Vector2f(cursorDrawWidth, lineHeight));
-    cursorRect.setFillColor(sf::Color::White);
+    cursorRect.setFillColor(sf::Color(65,100,74));
 
     cursorRect.setPosition(
         column * charWidth,
