@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
         loadFileName = workingDirectory + "txt/samples.txt";
     }
 
-    sf::RenderWindow window(sf::VideoMode(720, 405), "Jonno-text");
+    sf::RenderWindow window(sf::VideoMode(720, 405), "Editor");
     window.setVerticalSyncEnabled(true);
     sf::Color backgroundColor = sf::Color(21, 29, 45);
 
