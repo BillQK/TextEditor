@@ -24,9 +24,6 @@ class EditorView {
     void rotateLeft();
     void rotateRight();
 
-    void zoomIn();
-    void zoomOut();
-
     int getLineHeight();
     int getCharWidth();
 

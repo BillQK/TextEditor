@@ -8,7 +8,7 @@
 class EditorContent {
    public:
     EditorContent(TextDocument &textDocument);
-
+    
     bool moveCursorLeft(bool updateActiveSelections=false);
     void moveCursorRight(bool updateActiveSelections=false);
     void moveCursorUp(bool updateActiveSelections=false);

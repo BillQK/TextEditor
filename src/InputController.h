@@ -12,7 +12,7 @@ class InputController {
    public:
     InputController(EditorContent &editorContent);
     void handleConstantInput(EditorView &view, sf::RenderWindow &window);
-    void handleEvents(EditorView &view, sf::RenderWindow &window, sf::Event &event);
+    void handleEvents(EditorView &textView, sf::RenderWindow &window, sf::Event &event);
     bool isMouseDown();
 
     void handleMouseEvents(EditorView &view, sf::RenderWindow &window, sf::Event &event);
