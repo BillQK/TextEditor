@@ -33,9 +33,6 @@ class EditorView {
     sf::View getCameraView();
     void setCameraBounds(int width, int height);
 
-    void setDeltaScroll(float delta);
-    void setDeltaRotation(float delta);
-
     std::pair<int,int> getDocumentCoords(float mouseX, float mouseY);
 
    private:
@@ -59,9 +56,6 @@ class EditorView {
     sf::Color colorSelection;
 
     sf::View camera;
-    float deltaScroll;
-    float deltaRotation;
-    float deltaZoomIn, deltaZoomOut;
 };
 
 #endif
