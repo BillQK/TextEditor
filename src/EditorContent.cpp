@@ -77,8 +77,6 @@ void EditorContent::moveCursorDown(bool updateActiveSelections)
     }
 }
 
-
-
 void EditorContent::addTextInCursorPos(sf::String text)
 {
     int textSize = text.getSize();
@@ -91,8 +89,7 @@ void EditorContent::addTextInCursorPos(sf::String text)
     }
 }
 
-void EditorContent::deleteTextAfterCursorPos(int amount)
-{
+void EditorContent::deleteTextBeforeCursorPos(int amount) {
     int actuallyMoved = 0;
     for (int i = 0; i < amount; i++) {
         bool moved = this->moveCursorLeft();
@@ -101,8 +98,7 @@ void EditorContent::deleteTextAfterCursorPos(int amount)
     this->deleteTextAfterCursorPos(actuallyMoved);
 }
 
-void EditorContent::deleteTextBeforeCursorPos(int amount)
-{
+void EditorContent::deleteTextAfterCursorPos(int amount) {
     int newLineN = this->cursor.getLineN();
     int newCharN = this->cursor.getCharN();
     this->document.removeTextFromPos(amount, newLineN, newCharN);
@@ -166,7 +162,6 @@ int EditorContent::getCharIndexOfColumn(int lineN, int column)
 int EditorContent::getColumnFromCharN(int lineN, int charN)
 {
     sf::String line = this->getLine(lineN);
-    int len = this->colsInLine(lineN); 
     int currentCol = 0;
     for (int charNact = 0; charNact < charN; charNact++) {
         if (line[charNact] == '\t') {
