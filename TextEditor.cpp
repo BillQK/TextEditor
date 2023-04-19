@@ -20,7 +20,6 @@ int main(int argc, char* argv[]) {
     }
 
     sf::RenderWindow window(sf::VideoMode(720, 405), "Editor");
-    window.setVerticalSyncEnabled(true);
     sf::Color backgroundColor = sf::Color(21, 29, 45);
 
     TextDocument document;

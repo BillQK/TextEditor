@@ -173,7 +173,3 @@ int EditorContent::getColumnFromCharN(int lineN, int charN)
 
     return currentCol;
 }
-
-void EditorContent::handleSelectionOnCursorMovement(bool updateActiveSelections)
-{
-}

@@ -4,14 +4,13 @@ EditorView::EditorView(const sf::RenderWindow &window, const sf::String &working
 camera(sf::FloatRect(-50, 0, window.getSize().x, window.getSize().y))
 {
     // this->font.loadFromFile("fonts/FreeMono.ttf");
-    this->font.loadFromFile(workingDirectory + "fonts/DejaVuSansMono.ttf");
+    this->font.loadFromFile(workingDirectory + "fonts/FreeMono.ttf");
 
     this->bottomLimitPx = 1;
     this->rightLimitPx = 1;
 
-    this->setFontSize(18);  // Important to call
+    this->setFontSize(18); 
 
-    // TODO: Cambiarlo en relacion a la fontsize
     this->marginXOffset = 45;
     this->colorMargin = sf::Color(32, 44, 68);
 
@@ -125,7 +124,6 @@ void EditorView::drawLines(sf::RenderWindow &window)
         this->rightLimitPx = std::max((int)this->rightLimitPx, (int)(this->charWidth * line.getSize()));
 
         float offsetx = 0;
-        bool previousSelected = false;
 
         for (int charIndexInLine = 0; charIndexInLine <= (int)line.getSize(); charIndexInLine++) {
 

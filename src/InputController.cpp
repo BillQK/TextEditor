@@ -44,13 +44,6 @@ bool InputController::isMouseDown()
 void InputController::handleKeyPressedEvents(EditorView &textView, sf::Event &event)
 {   
     if (event.type == sf::Event::KeyPressed) {
-        bool isCtrlPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl);
-
-        bool isShiftPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::RShift);
-
-        bool isEndPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::End);
-
-        bool isHomePressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Home);
 
         if (event.key.code == sf::Keyboard::Up) {
             editorContent.moveCursorUp();
