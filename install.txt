@@ -1,0 +1,18 @@
+Dependencies
+
+	The program requires SFML, refer to https://www.sfml-dev.org/download/sfml/2.5.1/
+	for instructions on installation.
+
+Compile
+
+	`make` it runs the Makefile which includes the g++ command
+
+  This program was compiled and tested on Linux Ubuntu 22.10 but other Linux systems
+  are able to run it. It can be changed to be compatible with the user's operating system 
+  by modifying the Makefile to include the correct paths to the SFML location.
+
+Run
+	
+	`./editor` will run the program which opens a GUI window of the text editor. The 
+	user can then proceed to interact with the program through the keyboard and mouse.
+  ctrl+s will save the file.
