@@ -11,17 +11,13 @@
 #include <string>
 
 
-
-using std::string;
-using std::vector;
-
 class Document {
 public:
     // Initialize document from a file
-    bool init(const string &filename);
+    bool init(const std::string &filename);
 
     // Save document to a file
-    bool saveFile(const string &filename);
+    bool saveFile(const std::string &filename);
 
     // Check if document has changed since last save
     bool hasChanged() const;
@@ -64,7 +60,7 @@ private:
     int length;
 
     // Vector to keep track of the start position of each line in the buffer
-    vector<int> lineBuffer;
+    std::vector<int> lineBuffer;
 };
 
 
