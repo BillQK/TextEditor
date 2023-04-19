@@ -95,15 +95,6 @@ void InputController::handleKeyPressedEvents(EditorView &textView, sf::Event &ev
 
         bool isHomePressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Home);
 
-        //Move to END
-        if (isEndPressed) {
-            editorContent.moveCursorToEnd(isShiftPressed);
-            return;
-        } else if (isHomePressed) {  //Move to LINE_START
-            editorContent.moveCursorToStart(isShiftPressed);
-            return;
-        }
-
         if (event.key.code == sf::Keyboard::Up) {
             editorContent.moveCursorUp();
         }

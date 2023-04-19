@@ -6,7 +6,6 @@
 
 #include "EditorView.h"
 #include "EditorContent.h"
-#include "EditorView.h"
 
 class InputController {
    public:
