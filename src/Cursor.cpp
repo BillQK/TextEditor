@@ -1,74 +1,103 @@
 #include "Cursor.h"
 
-Cursor::Cursor() : Cursor(0, 0) {}
+// Default constructor initializes cursor at position (0, 0)
+Cursor::Cursor() : lineN(0), charN(0), maxCharNReached(0) {}
 
-Cursor::Cursor(int lineN, int charN) {
-    maxCharNReached = 0;
-    updatePos(lineN, charN);
-}
+// Constructor initializes cursor at a given line and character position
+Cursor::Cursor(int lineN, int charN) : lineN(lineN), charN(charN), maxCharNReached(0) {}
 
-void Cursor::moveUp() {
+// Move cursor up by one line
+void Cursor::moveUp()
+{
     updatePos(lineN - 1, charN);
 }
 
-void Cursor::moveDown() {
+// Move cursor down by one line
+void Cursor::moveDown()
+{
     updatePos(lineN + 1, charN);
 }
 
-void Cursor::moveLeft(bool updateMaxChar) {
-    if (updateMaxChar) {
+// Move cursor left by one character
+void Cursor::moveLeft(bool updateMaxChar)
+{
+    // Update maxCharNReached if specified
+    if (updateMaxChar)
+    {
         setMaxCharNReached(charN - 1);
     }
 
     updatePos(lineN, charN - 1);
 }
 
-void Cursor::moveRight(bool updateMaxChar) {
-    if (updateMaxChar) {
-        setMaxCharNReached(charN);
+// Move cursor right by one character
+void Cursor::moveRight(bool updateMaxChar)
+{
+    // Update maxCharNReached if specified
+    if (updateMaxChar)
+    {
+        setMaxCharNReached(charN + 1);
     }
 
     updatePos(lineN, charN + 1);
 }
 
-void Cursor::nextLine() {
+// Move cursor to beginning of next line
+void Cursor::nextLine()
+{
     charN = 0;
     moveDown();
 }
 
-int Cursor::getLineN() {
+// Get current line number of cursor
+int Cursor::getLineN()
+{
     return lineN;
 }
 
-int Cursor::getCharN() {
+// Get current character number of cursor
+int Cursor::getCharN()
+{
     return charN;
 }
-
-void Cursor::setPosition(int lineN, int charN, bool updateMaxChar) {
+// Set cursor position to given line and character position
+void Cursor::setPosition(int lineN, int charN, bool updateMaxChar)
+{
     updatePos(lineN, charN);
-    
-    if (updateMaxChar) {
+    // Update maxCharNReached if specified
+    if (updateMaxChar)
+    {
         setMaxCharNReached(charN);
     }
 }
 
-void Cursor::moveDownToMaxCharN() {
+// Move cursor down to maximum character position of next line
+void Cursor::moveDownToMaxCharN()
+{
     updatePos(lineN + 1, maxCharNReached);
 }
 
-void Cursor::moveUpToMaxCharN() {
+// Move cursor up to maximum character position of previous line
+void Cursor::moveUpToMaxCharN()
+{
     updatePos(lineN - 1, maxCharNReached);
 }
 
-void Cursor::setMaxCharNReached(int charN) {
+// Set maximum character position reached by cursor
+void Cursor::setMaxCharNReached(int charN)
+{
     maxCharNReached = charN;
 }
 
-int Cursor::getMaxCharNReached() {
+// Get maximum character position reached by cursor
+int Cursor::getMaxCharNReached()
+{
     return maxCharNReached;
 }
 
-void Cursor::updatePos(int posY, int posX) {
-    lineN = posY;
-    charN = posX;
+// Update cursor position to given line and character position
+void Cursor::updatePos(int lineN, int charN)
+{
+    this->lineN = lineN;
+    this->charN = charN;
 }

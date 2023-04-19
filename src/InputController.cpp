@@ -76,6 +76,7 @@ void InputController::handleTextEnteredEvent(EditorView &view, sf::Event &event)
                 break;
             case 127: 
                 editorContent.deleteTextAfterCursorPos(1);
+                break;
             default: 
                 editorContent.addTextInCursorPos(input); 
                 break;
