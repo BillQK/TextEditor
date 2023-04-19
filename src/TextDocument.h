@@ -30,9 +30,6 @@ class TextDocument {
     void removeTextFromPos(int amount, int lineN, int charN);
     sf::String getTextFromPos(int amount, int line, int charN);
 
-
-    int charAmountContained(int startLineN, int startCharN, int endLineN, int endCharN);
-
     int getBufferPos(int line, int charN);
 
     sf::String toUtf32(const std::string &inString);

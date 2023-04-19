@@ -3,7 +3,6 @@
 EditorView::EditorView(const sf::RenderWindow &window, const sf::String &workingDirectory, EditorContent &editorContent) : content(editorContent),
 camera(sf::FloatRect(-50, 0, window.getSize().x, window.getSize().y))
 {
-    // this->font.loadFromFile("fonts/FreeMono.ttf");
     this->font.loadFromFile(workingDirectory + "fonts/FreeMono.ttf");
 
     this->bottomLimitPx = 1;
@@ -128,15 +127,15 @@ void EditorView::drawLines(sf::RenderWindow &window)
         for (int charIndexInLine = 0; charIndexInLine <= (int)line.getSize(); charIndexInLine++) {
 
             if (charIndexInLine == (int)line.getSize()) {
-                sf::Text texto;
-                texto.setFillColor(this->colorChar);
-                texto.setFont(font);
-                texto.setString(currentLineText);
-                texto.setCharacterSize(this->fontSize);
-                texto.setPosition(offsetx, lineNumber * this->fontSize);
+                sf::Text text;
+                text.setFillColor(this->colorChar);
+                text.setFont(font);
+                text.setString(currentLineText);
+                text.setCharacterSize(this->fontSize);
+                text.setPosition(offsetx, lineNumber * this->fontSize);
 
-        
-                window.draw(texto);
+
+                window.draw(text);
 
                 currentLineText = "";
             }

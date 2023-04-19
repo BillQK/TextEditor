@@ -29,7 +29,7 @@ bool TextDocument::saveFile(string &filename)
     }
 
     std::stringstream savedFile;
-    // Replace the original loop with the following loop
+
     for (sf::Uint32 ch : this->buffer) {
         std::string utf8_char;
         sf::Utf8::encode(ch, std::back_inserter(utf8_char));
@@ -74,7 +74,6 @@ sf::String TextDocument::getLine(int lineNumber)
 
     return this->buffer.substring(bufferStart, cantidad);
 }
-
 
 
 int TextDocument::charsInLine(int line) const
@@ -137,11 +136,6 @@ sf::String TextDocument::getTextFromPos(int amount, int line, int charN)
 {
     int bufferPos = this->getBufferPos(line, charN);
     return this->buffer.substring(bufferPos, amount);
-}
-
-int TextDocument::charAmountContained(int startLineN, int startCharN, int endLineN, int endCharN)
-{
-    return this->getBufferPos(endLineN, endCharN) - this->getBufferPos(startLineN, startCharN) + 1;
 }
 
 bool TextDocument::initLinebuffer()
